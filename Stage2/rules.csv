@@ -1,0 +1,31 @@
+name,priority,direction,access,protocol,source_port,destination_port,source_address_prefix,destination_address_prefix,resource_group_name,network_security_group_name
+dmzrule1,200,Inbound,Allow,TCP,*,3299,*,*,agp-sap-rg,agp-dmz-nsg01
+jmprule1,200,Inbound,Allow,TCP,*,3389,*,172.24.50.32/27,agp-sap-rg,agp-jmp-nsg01
+prdappnsg1,200,Inbound,Allow,TCP,*,"22,3389,4237-4238,1128-1129,6001,8081,44390",172.24.50.32/27,172.24.70.0/26,agp-prd-rg,agp-prd-app-nsg01
+prdappnsg2,201,Inbound,Allow,TCP,*,"22, 3299, 3389, 1128-1129,4237-4238",172.24.50.64/27,172.24.70.0/26,agp-prd-rg,agp-prd-app-nsg01
+prdappnsg3,300,Inbound,Allow,*,*,0-65535,172.24.70.0/26,172.24.70.0/26,agp-prd-rg,agp-prd-app-nsg01
+prdappnsg4,400,Inbound,Allow,TCP,*,"22,25,53,80,81,88,123,389,443,445,636,1129,2049,2551,4237,4283,5160,8081,8088,21212,31111,1363-1364,30013-30498,3200-3399,3600-3699,3900-3999,4300-4304,44400-44499,4800-4909,49152-65535,515-516,5985-5986,6001-6004,6400-6450,8100-8199",172.24.70.64/26,172.24.70.0/26,agp-prd-rg,agp-prd-app-nsg01
+prdappnsg5,500,Inbound,Allow,UDP,*,"53,88,389,445,636,1163,5160,49152-65535",172.24.70.64/26,172.24.70.0/26,agp-prd-rg,agp-prd-app-nsg01
+prdappnsg6,600,Inbound,Allow,TCP,*,"3200-3210,3245-3345,3600-3610,4800-4810,443,8080,6400,3500-3515,5000-5002,8045-8046,8100-8110,54500-54508,54600-54608,44345-44346,54513-54518",172.24.50.0/24,172.24.60.0/26,agp-prd-rg,agp-prd-app-nsg01
+prdappnsg8,4000,Inbound,Deny,*,*,0-65535,*,*,agp-prd-rg,agp-prd-app-nsg01
+prddbnsg1,200,Inbound,Allow,TCP,*,"22,3389,4237-4238,1128-1129,30000-30099,1433,1434,65200-65210",172.24.50.32/27,172.24.70.64/26,agp-prd-rg,agp-prd-db-nsg01
+prddbnsg2,201,Inbound,Allow,TCP,*,"22, 3299, 3389, 1128-1129,4237-4238",172.24.50.64/27,172.24.70.64/26,agp-prd-rg,agp-prd-db-nsg01
+prddbnsg3,300,Inbound,Allow,TCP,*,0-65535,172.24.70.64/26,172.24.70.64/26,agp-prd-rg,agp-prd-db-nsg01
+prddbnsg4,400,Inbound,Allow,TCP,*,"22,25,53,80,81,88,123,389,443,445,636,1129,2049,2551,4237,4283,5160,8081,8088,21212,31111,1363-1364,30013-30498,3200-3399,3600-3699,3900-3999,4300-4304,44400-44499,4800-4909,49152-65535,515-516,5985-5986,6001-6004,6400-6450,8100-8199",172.24.70.0/26,172.24.70.64/26,agp-prd-rg,agp-prd-db-nsg01
+prddbnsg5,401,Inbound,Allow,TCP,*,"53,88,389,445,636,1163,5160,49152-65535",172.24.70.0/26,172.24.70.64/26,agp-prd-rg,agp-prd-db-nsg01
+prddbnsg6,4000,Inbound,Deny,*,*,0-65535,*,*,agp-prd-rg,agp-prd-db-nsg01
+devappnsg1,200,Inbound,Allow,TCP,*,"22,3389,4237-4238,1128-1129,6001,8081,44390",172.24.50.32/27,172.24.60.0/26,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devappnsg2,201,Inbound,Allow,TCP,*,"22, 3299, 3389, 1128-1129, 4237-4238",172.24.50.64/27,172.24.60.0/26,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devappnsg3,300,Inbound,Allow,*,*,0-65535,172.24.60.0/26,172.24.60.0/26,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devappnsg4,400,Inbound,Allow,TCP,*,"22,25,53,80,81,88,123,389,443,445,636,1129,2049,2551,4237,4283,5160,8081,8088,21212,31111,1363-1364,30013-30498,3200-3399,3600-3699,3900-3999,4300-4304,44400-44499,4800-4909,49152-65535,515-516,5985-5986,6001-6004,6400-6450,8100-8199",172.24.60.64/26,172.24.60.0/26,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devappnsg5,500,Inbound,Allow,UDP,*,"53,88,389,445,636,1163,5160,49152-65535",172.24.60.64/26,172.24.60.0/26,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devappnsg6,600,Inbound,Allow,TCP,*,"3200-3210,3245-3345,3600-3610,4800-4810,443,8080,6400,3500-3515,5000-5002,8045-8046,8100-8110,54500-54508,54600-54608,44345-44346,54513-54518",172.24.50.0/24,172.24.60.0/26,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devappnsg8,800,Inbound,Allow,TCP,*,"59813-59814,1128-1129",172.24.70.0/26,172.24.60.0/26,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devappnsg9,4000,Inbound,Deny,*,*,0-65535,*,*,agp-dev-qa-rg,agp-dev-qa-app-nsg01
+devdbnsg1,200,Inbound,Allow,TCP,*,"22,3389,4237-4238,1128-1129,30000-30099,1433,1434,65200-65210",172.24.50.32/27,172.24.60.64/26,agp-dev-qa-rg,agp-dev-qa-db-nsg01
+devdbnsg2,201,Inbound,Allow,TCP,*,"22, 3299, 3389, 1128-1129, 4237-4238",172.24.50.64/27,172.24.60.64/26,agp-dev-qa-rg,agp-dev-qa-db-nsg01
+devdbnsg3,300,Inbound,Allow,*,*,0-65535,172.24.60.64/26,172.24.60.64/26,agp-dev-qa-rg,agp-dev-qa-db-nsg01
+devdbnsg4,400,Inbound,Allow,TCP,*,"22,25,53,80,81,88,123,389,443,445,636,1129,2049,2551,4237,4283,5160,8081,8088,21212,31111,1363-1364,30013-30498,3200-3399,3600-3699,3900-3999,4300-4304,44400-44499,4800-4909,49152-65535,5985-5986,6001-6004,6400-6450,8100-8199",172.24.60.0/26,172.24.60.64/26,agp-dev-qa-rg,agp-dev-qa-db-nsg01
+devdbnsg5,401,Inbound,Allow,TCP,*,"53,88,389,445,636,1163,5160,49152-65535",172.24.60.0/26,172.24.60.64/26,agp-dev-qa-rg,agp-dev-qa-db-nsg01
+devdbnsg6,500,Inbound,Allow,TCP,*,"30000-30099,59813-59814,1128-1129,8000,4900-4999",172.24.70.0/26,172.24.60.64/26,agp-dev-qa-rg,agp-dev-qa-db-nsg01
+devdbnsg7,4000,Inbound,Deny,*,*,0-65535,*,*,agp-dev-qa-rg,agp-dev-qa-db-nsg01

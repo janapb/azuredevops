@@ -1,0 +1,285 @@
+{
+  "LandingZoneComponentsDeployment": [],
+  "CustomerCIDR": [],
+  "Expressroute": [
+    {
+      "Name": "expressRoute1",
+      "Resource_group_name": "agp-sap-rg",
+      "Region": "Southeast Asia",
+      "Service_provider_name": "Airtel",
+      "Peering_location": "Chennai2",
+      "Bandwidth_in_mbps": 100.0,
+      "Tier": "Standard",
+      "Family": "MeteredData"
+    }
+  ],
+  "Gatwaysubnet": [
+    {
+      "Address_Space": "172.24.50.0/27",
+      "Resource_group_name": "agp-sap-rg",
+      "Vnet_Name": "agp-hub-vnet",
+      "Name": "GatewaySubnet"
+    }
+  ],
+  "Localgateway": [
+    {
+      "Name": "agp-sap-lgw",
+      "Gateway_address": "168.62.225.23",
+      "Address_space": "10.1.1.0/24",
+      "Resource_group_name": "agp-sap-rg",
+      "Region": "Southeast Asia"
+    }
+  ],
+  "VirtualNetworkgateway": [
+    {
+      "Name": "agp-sap-vngw",
+      "Type": "ExpressRoute",
+      "sku": "Standard",
+      "vpn_type": "RouteBased",
+      "Publicip_Name": "agp-sap-gw_pip",
+      "Resource_group_name": "agp-sap-rg",
+      "Region": "Southeast Asia",
+      "GatewayName": "GatewaySubnet"
+    }
+  ],
+  "Storage": [
+    {
+      "Resourcegroup_Name": "agp-tf-rg",
+      "Region": "Southeast Asia",
+      "Storagename": "tfstorageacc",
+      "Containername": "tstate-dev-cont",
+      "Account_tier": "Standard",
+      "Replication_type": "LRS",
+      "Access_Type": "private"
+    },
+    {
+      "Resourcegroup_Name": "agp-sa-rg",
+      "Region": "Southeast Asia",
+      "Storagename": "agpcgdsa",
+      "Containername": "agpcgdcont",
+      "Account_tier": "Standard",
+      "Replication_type": "LRS",
+      "Access_Type": "private"
+    }
+  ],
+  "ResourceGroup": [
+    {
+      "Env": "lz-terraform",
+      "Name": "agp-tf-rg",
+      "Region": "Southeast Asia"
+    },
+    {
+      "Env": "lz-storage",
+      "Name": "agp-sa-rg",
+      "Region": "Southeast Asia"
+    },
+    {
+      "Env": "hub",
+      "Name": "agp-sap-rg",
+      "Region": "Southeast Asia"
+    },
+    {
+      "Env": "dev ",
+      "Name": "agp-dev-qa-rg",
+      "Region": "Southeast Asia"
+    },
+    {
+      "Env": "prd",
+      "Name": "agp-prd-rg",
+      "Region": "Southeast Asia"
+    }
+  ],
+  "PPG": [
+    {
+      "Name": "agg-qas-s4h-ppg",
+      "Resourcegroup_Name": "agp-dev-qa-rg",
+      "Region": "Southeast Asia"
+    },
+    {
+      "Name": "agp-prd-s4h-ppg",
+      "Resourcegroup_Name": "agp-prd-rg",
+      "Region": "Southeast Asia"
+    },
+    {
+      "Name": "agp-prd-po-ppg",
+      "Resourcegroup_Name": "agp-prd-rg",
+      "Region": "Southeast Asia"
+    }
+  ],
+  "RecoveryServicesVault": [
+    {
+      "Name": "agp-sec-vault",
+      "Resourcegroup_Name": "agp-dev-qa-rg",
+      "Region": "Southeast Asia",
+      "sku": "Standard"
+    }
+  ],
+  "Tags": [
+    {
+      "CustomerName": "AGP",
+      "CreatedBy": "Terraform"
+    }
+  ],
+  "Subnet": [
+    {
+      "Subnet": "Jump Box",
+      "To host": "Jump Box",
+      "Subnet_Name": "agp-jmp-subnet",
+      "Resourcegroup_Name": "agp-sap-rg",
+      "NSG": "agp-jmp-nsg01",
+      "Vnet_Name": "agp-hub-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.50.32/27",
+      "First_IP": "172.24.50.36"
+    },
+    {
+      "Subnet": "DMZ Subnet",
+      "To host": "Gateways",
+      "Subnet_Name": "agp-dmz-subnet",
+      "Resourcegroup_Name": "agp-sap-rg",
+      "NSG": "agp-dmz-nsg01",
+      "Vnet_Name": "agp-hub-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.50.64/27",
+      "First_IP": "172.24.50.68"
+    },
+    {
+      "Subnet": "Storage Subnet",
+      "To host": "NVA",
+      "Subnet_Name": "agp-strg-subnet",
+      "Resourcegroup_Name": "agp-sap-rg",
+      "NSG": "agp-strg-nsg01",
+      "Vnet_Name": "agp-hub-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.50.96/27",
+      "First_IP": "172.24.50.100"
+    },
+    {
+      "Subnet": "Spare Subnet",
+      "Subnet_Name": "agp-spare-subnet",
+      "Resourcegroup_Name": "agp-sap-rg",
+      "NSG": "agp-spare-nsg01",
+      "Vnet_Name": "agp-hub-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.50.128/27",
+      "First_IP": "172.24.50.128"
+    },
+    {
+      "Subnet": "DEV-QA",
+      "To host": "dev SAP Application",
+      "Subnet_Name": "agp-dev-qa-app-subnet",
+      "Resourcegroup_Name": "agp-dev-qa-rg",
+      "NSG": "agp-dev-qa-app-nsg01",
+      "Vnet_Name": "agp-dev-qa-spoke-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.60.0/26",
+      "First_IP": "172.24.60.4"
+    },
+    {
+      "Subnet": "DEV-QA",
+      "To host": "dev SAP Database",
+      "Subnet_Name": "agp-dev-qa-db-subnet",
+      "Resourcegroup_Name": "agp-dev-qa-rg",
+      "NSG": "agp-dev-qa-db-nsg01",
+      "Vnet_Name": "agp-dev-qa-spoke-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.60.64/26",
+      "First_IP": "172.24.60.68"
+    },
+    {
+      "Subnet": "PRD",
+      "To host": "Prd SAP Application",
+      "Subnet_Name": "agp-prd-app-subnet",
+      "Resourcegroup_Name": "agp-prd-rg",
+      "NSG": "agp-prd-app-nsg01",
+      "Vnet_Name": "agp-prd-spoke-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.70.0/26",
+      "First_IP": "172.24.70.4"
+    },
+    {
+      "Subnet": "PRD",
+      "To host": "PRD SAP Database",
+      "Subnet_Name": "agp-prd-db-subnet",
+      "Resourcegroup_Name": "agp-prd-rg",
+      "NSG": "agp-prd-db-nsg01",
+      "Vnet_Name": "agp-prd-spoke-vnet",
+      "Region": "Southeast Asia",
+      "Address_Space": "172.24.70.64/26",
+      "First_IP": "172.24.70.68"
+    }
+  ],
+  "Vnet": [
+    {
+      "Vnet": "Hub Vnet",
+      "To_Host": "Hub Appliance",
+      "Vnet_Name": "agp-hub-vnet",
+      "Resourcegroup_Name": "agp-sap-rg",
+      "Region": "Southeast Asia",
+      "Addres_Space": "172.24.50.0/24",
+      "First_IP": "172.24.50.0",
+      "Last_IP": "172.24.50.255",
+      "No_of_IP": 255.0
+    },
+    {
+      "Vnet": "Spoke Vnet - dev",
+      "To_Host": "SAP Application & Database",
+      "Vnet_Name": "agp-dev-qa-spoke-vnet",
+      "Resourcegroup_Name": "agp-dev-qa-rg",
+      "Region": "Southeast Asia",
+      "Addres_Space": "172.24.60.0/24",
+      "First_IP": "172.24.60.0",
+      "Last_IP": "172.24.60.255",
+      "No_of_IP": 255.0
+    },
+    {
+      "Vnet": "Spoke Vnet - Prd",
+      "To_Host": "SAP Application & Database",
+      "Vnet_Name": "agp-prd-spoke-vnet",
+      "Resourcegroup_Name": "agp-prd-rg",
+      "Region": "Southeast Asia",
+      "Addres_Space": "172.24.70.0/24",
+      "First_IP": "172.24.70.0",
+      "Last_IP": "172.24.70.255",
+      "No_of_IP": 255.0
+    }
+  ],
+  "Peering": [
+    {
+      "Name": "Hub-To-Dev-Spoke",
+      "Resourcegroup_Name": "agp-sap-rg",
+      "Vnet_Name": "agp-hub-vnet",
+      "Remote_virtual_network": "agp-dev-qa-spoke-vnet",
+      "Remote_Resourcegroup_Name": "agp-dev-qa-rg",
+      "Allow_virtual_network_access": "true",
+      "Allow_forwarded_traffic": "true"
+    },
+    {
+      "Name": "Hub-To-Prd-Spoke",
+      "Resourcegroup_Name": "agp-sap-rg",
+      "Vnet_Name": "agp-hub-vnet",
+      "Remote_virtual_network": "agp-prd-spoke-vnet",
+      "Remote_Resourcegroup_Name": "agp-prd-rg",
+      "Allow_virtual_network_access": "true",
+      "Allow_forwarded_traffic": "true"
+    },
+    {
+      "Name": "Dev-Spoke-To-Hub",
+      "Resourcegroup_Name": "agp-dev-qa-rg",
+      "Vnet_Name": "agp-dev-qa-spoke-vnet",
+      "Remote_virtual_network": "agp-hub-vnet",
+      "Remote_Resourcegroup_Name": "agp-sap-rg",
+      "Allow_virtual_network_access": "true",
+      "Allow_forwarded_traffic": "true"
+    },
+    {
+      "Name": "Prd-Spoke-To-Hub",
+      "Resourcegroup_Name": "agp-prd-rg",
+      "Vnet_Name": "agp-prd-spoke-vnet",
+      "Remote_virtual_network": "agp-hub-vnet",
+      "Remote_Resourcegroup_Name": "agp-sap-rg",
+      "Allow_virtual_network_access": "true",
+      "Allow_forwarded_traffic": "true"
+    }
+  ]
+}
